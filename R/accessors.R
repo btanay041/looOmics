@@ -43,7 +43,41 @@ setMethod("show", "LOOResult", function(object) {
   else cat("  profiles: not computed (see profile_flags())\n")
   invisible(NULL)
 })
-
+#' Display an OmicsInput object
+#'
+#' Prints a compact summary of the assay dimensions, metadata,
+#' engine, transformation, and input provenance.
+#'
+#' @param object An \code{\linkS4class{OmicsInput}} object.
+#' @return Prints a summary and returns invisibly.
+#' @export
+setMethod("show", "OmicsInput", function(object) {
+  cat("OmicsInput\n")
+  
+  cat("  assay:", nrow(object@assay), "features x",
+      ncol(object@assay), "samples\n")
+  
+  cat("  feature metadata:", ncol(object@row_data), "columns\n")
+  
+  cat("  sample metadata:", ncol(object@col_data), "columns\n")
+  
+  cat("  engine:", object@engine, "\n")
+  
+  transform <- if (nzchar(object@transform)) {
+    object@transform
+  } else {
+    "none"
+  }
+  cat("  transform:", transform, "\n")
+  
+  cat("  source class:", object@data_class, "\n")
+  
+  if (nzchar(object@formula)) {
+    cat("  formula:", object@formula, "\n")
+  }
+  
+  invisible(NULL)
+})
 #' @export
 setMethod("summary", "LOOResult", function(object, ...) {
   s <- object@shifts[!object@shifts$error, , drop = FALSE]
@@ -73,6 +107,10 @@ print.summary.LOOResult <- function(x, ...) {
 #' Extract the assay matrix from an OmicsInput
 #'
 #' @param x An \code{\linkS4class{OmicsInput}}.
+#' @param i Missing. The OmicsInput contains a single assay, so no index
+#'   is required.
+#' @param withDimnames Logical. Included for compatibility with the
+#'   \code{assay} generic. The stored assay's dimnames are preserved.
 #' @param ... Unused.
 #' @return The numeric assay matrix (features in rows and samples in columns).
 #' @examples

@@ -1,5 +1,4 @@
 \name{LOOResult-methods}
-\alias{coef,LOOResult-method}
 \alias{show,LOOResult-method}
 \alias{summary,LOOResult-method}
 \docType{methods}

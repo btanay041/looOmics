@@ -1,7 +1,7 @@
 Package: looOmics
 Type: Package
 Title: Leave-One-Out Sensitivity Analysis for Omics Differential Models
-Version: 0.99.1
+Version: 0.99.3
 Authors@R: person("Tanay", "Belapurkar", email = "btanay041@gmail.com", role = c("aut", "cre"))
 Description: Performs sample-wise leave-one-out sensitivity analysis for
     differential models on high-dimensional omics data. Quantifies changes in

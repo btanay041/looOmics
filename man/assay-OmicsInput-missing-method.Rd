@@ -9,6 +9,12 @@
 \arguments{
 \item{x}{An \code{\linkS4class{OmicsInput}}.}
 
+\item{i}{Missing. The OmicsInput contains a single assay, so no index
+is required.}
+
+\item{withDimnames}{Logical. Included for compatibility with the
+\code{assay} generic. The stored assay's dimnames are preserved.}
+
 \item{...}{Unused.}
 }
 \value{
